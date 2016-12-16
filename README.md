@@ -1,11 +1,14 @@
 # vue-sample
 
-> A Vue.js project
+> 使用VUE制作前端工程的一个例子；使用了vue-router和vux
+> 例子中包含了简单的几个页面，样例组件等一些常用的处理方式
 
-## Build Setup
+## 0.首先安装nodejs, vue, npm 等
+
+## 使用步骤
 
 ``` bash
-# install dependencies
+# install dependencies；下载工程后，首先用npm安装依赖的组件
 npm install
 
 # serve with hot reload at localhost:8080

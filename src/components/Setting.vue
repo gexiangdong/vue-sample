@@ -16,7 +16,7 @@ export default {
   name: 'Setting',
   data () {
     return {
-      groupA: [{path: '/aa', name: '个人信息'},
+      groupA: [{path: '/foo/888', name: '个人信息'},
                {path: '/aa', name: '设置头像'},
                {path: '/aa', name: '修改密码', id: 'changepassword'}],
       groupB: [{path: '/aa', name: '切换用户'},

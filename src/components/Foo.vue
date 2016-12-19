@@ -22,6 +22,7 @@ export default {
   created () {
     // 组件加载完毕会调用此函数
     console.log('created called')
+    this.$store.commit('setShowLoadding', false)
     CommonUtil.setTitle('Foo页面')
     this.$store.commit('setShowBottomMenu', false) // 不显示底部菜单
     this.$store.commit('setTab', 'none') // 设置底部高亮菜单为none, home和setting都不会加量

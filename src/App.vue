@@ -4,17 +4,17 @@
     <div id="footer" v-show="state.isShowBottomMenu ">
       <FooterMenu></FooterMenu>
     </div>
-    <div id="loadding" v-bind:class="{hideloading: state.isShowLoadding == false}">
-      <div class="mask">
-      </div>
+    <div class="loader" v-bind:class="{hideme: state.isShowLoadding == false}">
+      <div class="mask"></div>
       <div class="icon">
-        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 200 200" height="200" width="200">
-              <circle cx="15" cy="100" r="6" />
-              <circle cx="185" cy="100" r="6" />
-              <circle cx="100" cy="15" r="6" />
-              <circle cx="100" cy="185" r="6" />
-          </svg>
+        <svg viewBox="0 0 32 32" width="32" height="32">
+          <circle id="spinner" cx="16" cy="16" r="14" fill="none"></circle>
+        </svg>
       </div>
+    </div>
+    <div class="toastcontainer" v-bind:style="state.toastStyle">
+      <div class="mask"></div>
+      <div class="message">{{ state.toastMessage }}</div>
     </div>
   </div>
 </template>
@@ -54,12 +54,22 @@ body{background-color:#FFF; margin:0px; padding:0; font-size:28px;}
 #footer li.redpoint:after{content: " "; display: inline-block; border:0px solid #f43531; background-color:#f43531; position: absolute; width:20px; height:20px; border-radius:10px; top: 10px; right:60px; }
 
 /* loadding */
-#loadding{postion:fixed; top:0; left:0; width:100%; height: 100%;}
-.hideloading{display:none;}
-#loadding .mask {position:fixed; top:0px; bottom:0px; width:100%; height: 100%; background-color: #000; opacity: 0.3; z-index:666;}
-#loadding .icon{position:fixed; z-index:996; top:40%; left:50%; width:200px; height:200px; margin: -100px 0px 0px -100px; border-radius:8px; background:#999 url('/static/loadingicon.png') no-repeat center center; background-size: 150px 150px; opacity: 1;}
-#loadding .icon svg circle{fill:#FFF; stroke-width:0; stroke:#FFF;}
-#loadding .icon svg {animation: rotate 1.6s linear infinite; }
-@keyframes rotate {from { transform: rotate(0); } to {transform: rotate(360deg); } }
+.hideme {display:none;}
+.loader {left: 0; top: 0; width:100%; height: 100%; position: fixed;}
+.loader .mask {position:fixed; top:0px; bottom:0px; width:100%; height: 100%; background-color: #000; opacity: 0.3; z-index:666;}
+.loader .icon {position:absolute; left:50%; top:40%; margin-left:-32px; margin-top: -32px; width:64px; height:64px;}
+.loader svg{width:64px; height:64px;}
+.loader #spinner {box-sizing: border-box; stroke: #666; stroke-width: 3px; transform-origin: 50%; animation: line 1.6s cubic-bezier(0.4, 0, 0.2, 1) infinite, rotate 1.6s linear infinite; }
 
+@keyframes rotate {from { transform: rotate(0); } to {transform: rotate(450deg); } }
+@keyframes line {
+  0% { stroke-dasharray: 2, 85.964; transform: rotate(0); }
+  50% { stroke-dasharray: 65.973, 21.9911; stroke-dashoffset: 0; }
+  100% { stroke-dasharray: 2, 85.964; stroke-dashoffset: -65.973; transform: rotate(90deg); } 
+}
+
+/* toast */
+.toastcontainer { position: fixed; top: 20%; left:50%; margin-left: -150px; width: 300px; overflow: hidden; border-radius:5px; transition:opacity 0.8s;}
+.toastcontainer .mask {z-index:-1; position:absolute; left:0px; top:0px; background-color:#666; opacity: 0.9; height:300px; width:100%;}
+.toastcontainer .message { padding: 20px; text-align:center; color:#FFF; font-size: 18px; line-height: 24px;}
 </style>

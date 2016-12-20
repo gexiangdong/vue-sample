@@ -17,6 +17,7 @@ export default {
   data () {
     return {
       groupA: [{path: '/foo/888', name: '个人信息'},
+               {path: '/monthcalendar/2016/12', name: '日历'},
                {path: '/aa', name: '设置头像'},
                {path: '/aa', name: '修改密码', id: 'changepassword'}],
       groupB: [{path: '/aa', name: '切换用户'},

@@ -11,11 +11,13 @@ Vue.use(VueRouter)
 // Foo是异步调用的组件的例子； Home则是同步调用的组件
 const Foo = resolve => require(['./components/Foo'], resolve)
 const Setting = resolve => require(['./components/Setting'], resolve)
+const MonthCalendar = resolve => require(['./components/MonthCalendar'], resolve)
 
 const routes = [
   { path: '/', name: 'home', component: Home },
   { path: '/foo/:id', name: 'foo', component: Foo },
-  { path: '/setting', component: Setting }
+  { path: '/setting', component: Setting },
+  { path: '/monthcalendar/:year/:month', component: MonthCalendar }
 ]
 
 const router = new VueRouter({
